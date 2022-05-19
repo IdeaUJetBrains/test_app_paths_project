@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 @Path("regexp3")
 public class Regexp_Res3_made_for_test_issue249031 {
 
-//    http://localhost:8080/Rest_glassfish_hello_world2_war_exploded/app_path/api/users0/some-some-some
+//   http://localhost:8080/Rest_glassfish_hello_world2_war_exploded/root_path/regexp3/some-some-some
 
     @GET
     public String get1(){ return "test";    }
