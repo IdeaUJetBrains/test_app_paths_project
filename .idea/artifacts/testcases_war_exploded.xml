@@ -1,0 +1,27 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="testcases:war exploded">
+    <output-path>$PROJECT_DIR$/testcases/target/testcases-1.0-SNAPSHOT</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>testcases</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="testcases" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: io.swagger:swagger-annotations:1.5.24" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.4.12" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/testcases/target/testcases-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="testcases/web/Web" />
+    </root>
+  </artifact>
+</component>

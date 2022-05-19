@@ -1,0 +1,81 @@
+openapi: 3.0.0
+x-internal-id:
+  title: API
+  application/xml: '<users><user>Alice</user><user>Bob</user></users>'
+info:
+  title: Sample Pet Store App
+  description: 'This is a "sample" server for a pet store.'
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.1
+
+#todo COMPLETION
+servers:
+  - url: http://test.com/api/hello-world/
+    description: Optional server description, e.g. Main (production) server
+    variables:
+      username:
+        # note! no enum here means it is an open value
+        default: demo
+        description: this value is assigned by the service provider, in this example `gigantic-server.com`
+      port:
+        enum:
+          - '8443'
+          - '443'
+        default: '8443'
+      basePath:
+        # open meaning there is the opportunity to use special base paths as assigned by the provider, default is `v2`
+        default: v2
+
+
+
+
+paths:
+  /megaRequest:
+    patch:
+      tags:
+        - pet
+      summary: Updates a pet in the store with form data
+      operationId: updatePetWithForm
+      parameters:
+        - name: petId
+          in: path
+          description: ID of pet that needs to be updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          'application/x-www-form-urlencoded':
+            schema:
+              properties:
+                name:
+                  description: Updated name of the pet
+                  type: string
+                status:
+                  description: Updated status of the pet
+                  type: string
+              required:
+                - status
+      responses:
+        '200':
+          description: Pet updated.
+          content:
+            'application/json': {}
+            'application/xml': {}
+        '405':
+          description: Method Not Allowed
+          content:
+            'application/json': {}
+            'application/xml': {}
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+
